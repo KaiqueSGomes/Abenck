@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Abenck</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">A ABENCK</div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Voltar</a>
+                    <a href="#" class="nav-link" onclick="logout()">Sair</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active" data-tab="overview">
+                    <span class="icon">📊</span>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="analytics">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="profile">
+                    <span class="icon">👤</span>
+                    <span>Perfil da Empresa</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="promotion">
+                    <span class="icon">🚀</span>
+                    <span>Impulsionar</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="reviews">
+                    <span class="icon">⭐</span>
+                    <span>Avaliações</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="dashboard-header">
+                    <h1>Visão Geral</h1>
+                    <p id="companyNameDisplay">Carregando...</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Visualizações do Perfil</div>
+                            <div class="stat-value" id="totalViews">0</div>
+                            <div class="stat-period">Últimos 7 dias</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Cliques no WhatsApp</div>
+                            <div class="stat-value" id="totalClicks">0</div>
+                            <div class="stat-period">Últimos 7 dias</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📱</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Taxa de Conversão</div>
+                            <div class="stat-value" id="conversionRate">0%</div>
+                            <div class="stat-period">Últimos 7 dias</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Status Patrocínio</div>
+                            <div class="stat-value" id="sponsorshipStatus">Inativo</div>
+                            <div class="stat-period">
+                                <a href="#" onclick="switchTab('promotion')" class="link">Ativar →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="tab-content" id="analytics">
+                <div class="dashboard-header">
+                    <h1>Analytics</h1>
+                    <p>Acompanhe o desempenho do seu perfil</p>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Visualizações vs Cliques</h3>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Distribuição de Interações</h3>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analytics-table">
+                    <h3>Detalhes Diários</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Visualizações</th>
+                                <th>Cliques</th>
+                                <th>Taxa de Conversão</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analyticsTableBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; padding: 20px;">Carregando dados...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="tab-content" id="profile">
+                <div class="dashboard-header">
+                    <h1>Perfil da Empresa</h1>
+                    <p>Edite as informações da sua empresa</p>
+                </div>
+
+                <div class="profile-form">
+                    <form id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome da Empresa</label>
+                                <input type="text" id="companyName" placeholder="Nome da empresa">
+                            </div>
+                            <div class="form-group">
+                                <label>Categoria</label>
+                                <select id="companyCategory">
+                                    <option value="">Selecione uma categoria</option>
+                                    <option value="Elétrica">Elétrica</option>
+                                    <option value="Hidráulica">Hidráulica</option>
+                                    <option value="CFTV">CFTV</option>
+                                    <option value="Limpeza">Limpeza</option>
+                                    <option value="Portões">Portões</option>
+                                    <option value="AVCB">AVCB</option>
+                                    <option value="Manutenção">Manutenção</option>
+                                    <option value="Pintura">Pintura</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea id="companyDescription" placeholder="Descreva sua empresa e serviços" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="tel" id="companyPhone" placeholder="(11) 99999-9999">
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp</label>
+                                <input type="tel" id="companyWhatsapp" placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Endereço</label>
+                                <input type="text" id="companyAddress" placeholder="Rua, número">
+                            </div>
+                            <div class="form-group">
+                                <label>CEP</label>
+                                <input type="text" id="companyCEP" placeholder="00000-000">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input type="text" id="companyCity" placeholder="São Paulo">
+                            </div>
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" id="companyState" placeholder="SP" maxlength="2">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                        <div class="form-message" id="profileMessage"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Promotion Tab -->
+            <div class="tab-content" id="promotion">
+                <div class="dashboard-header">
+                    <h1>Impulsionar Seu Perfil</h1>
+                    <p>Aumente sua visibilidade e alcance mais clientes</p>
+                </div>
+
+                <div class="promotion-container">
+                    <div class="promotion-info">
+                        <h3>Como funciona?</h3>
+                        <ul>
+                            <li>✓ Seu perfil aparecerá no carrossel da página inicial</li>
+                            <li>✓ Maior visibilidade na sua região</li>
+                            <li>✓ Destaque entre os concorrentes</li>
+                            <li>✓ Válido por 30 dias</li>
+                        </ul>
+                    </div>
+
+                    <div class="promotion-pricing">
+                        <div class="price-card">
+                            <h3>Plano Básico</h3>
+                            <div class="price">R$ 59,99</div>
+                            <p class="period">por 30 dias</p>
+                            <button class="btn btn-primary btn-block" onclick="startPayment(59.99)">
+                                Impulsionar Agora
+                            </button>
+                        </div>
+
+                        <div class="price-card featured">
+                            <div class="badge-featured">Mais Popular</div>
+                            <h3>Plano Premium</h3>
+                            <div class="price">R$ 149,99</div>
+                            <p class="period">por 90 dias</p>
+                            <button class="btn btn-secondary btn-block" onclick="startPayment(149.99)">
+                                Impulsionar Agora
+                            </button>
+                        </div>
+
+                        <div class="price-card">
+                            <h3>Plano Pro</h3>
+                            <div class="price">R$ 249,99</div>
+                            <p class="period">por 180 dias</p>
+                            <button class="btn btn-primary btn-block" onclick="startPayment(249.99)">
+                                Impulsionar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="promotion-active" id="promotionActive" style="display: none;">
+                        <h3>Seu patrocínio está ativo!</h3>
+                        <div class="promotion-details">
+                            <p><strong>Data de início:</strong> <span id="promotionStartDate">-</span></p>
+                            <p><strong>Data de término:</strong> <span id="promotionEndDate">-</span></p>
+                            <p><strong>Dias restantes:</strong> <span id="promotionDaysLeft">-</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div class="tab-content" id="reviews">
+                <div class="dashboard-header">
+                    <h1>Avaliações</h1>
+                    <p>Veja o que os clientes falam sobre você</p>
+                </div>
+
+                <div class="reviews-container">
+                    <div class="rating-summary">
+                        <div class="rating-score">
+                            <div class="score">4.9</div>
+                            <div class="stars">★★★★★</div>
+                            <div class="count">Baseado em 24 avaliações</div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list" id="reviewsList">
+                        <p style="text-align: center; padding: 40px; color: #999;">
+                            Nenhuma avaliação ainda
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Pagamento -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePaymentModal()">×</button>
+            <h2>Processando Pagamento</h2>
+            <p>Redirecionando para Mercado Pago...</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

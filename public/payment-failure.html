@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Falhou - Abenck</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .payment-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .payment-box {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .payment-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        .payment-message {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background: #fee;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid #e74c3c;
+            text-align: left;
+        }
+
+        .error-details p {
+            font-size: 14px;
+            color: #c33;
+            margin: 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-group a {
+            flex: 1;
+        }
+
+        @media (max-width: 480px) {
+            .payment-box {
+                padding: 40px 20px;
+            }
+
+            .payment-icon {
+                font-size: 60px;
+            }
+
+            .payment-title {
+                font-size: 22px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-box">
+            <div class="payment-icon">❌</div>
+            <h1 class="payment-title">Pagamento Não Realizado</h1>
+            <p class="payment-message">
+                Desculpe, houve um problema ao processar seu pagamento. Por favor, tente novamente ou entre em contato com o suporte.
+            </p>
+
+            <div class="error-details">
+                <p>
+                    <strong>Possíveis causas:</strong><br>
+                    • Dados de cartão inválidos<br>
+                    • Saldo insuficiente<br>
+                    • Cartão bloqueado<br>
+                    • Erro de conexão
+                </p>
+            </div>
+
+            <div class="button-group">
+                <a href="dashboard.html" class="btn btn-primary">Voltar ao Dashboard</a>
+                <a href="index.html" class="btn btn-secondary">Ir para Início</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Payment failed');
+    </script>
+</body>
+</html>

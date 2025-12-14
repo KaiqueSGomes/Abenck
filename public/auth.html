@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abenck - Autenticação</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1 class="logo">A ABENCK</h1>
+                <p class="subtitle">Serviços para condomínios</p>
+            </div>
+
+            <!-- Abas de Login/Registro -->
+            <div class="auth-tabs">
+                <button class="tab-button active" data-tab="login">Entrar</button>
+                <button class="tab-button" data-tab="register-user">Cadastro - Pessoa</button>
+                <button class="tab-button" data-tab="register-company">Cadastro - Empresa</button>
+            </div>
+
+            <!-- Tab: Login -->
+            <div class="tab-content active" id="login">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" name="email" required placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Senha</label>
+                        <input type="password" id="loginPassword" name="password" required placeholder="Sua senha">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+
+                    <div class="form-message" id="loginMessage"></div>
+                </form>
+            </div>
+
+            <!-- Tab: Registro - Pessoa Física -->
+            <div class="tab-content" id="register-user">
+                <form id="registerUserForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="userFullName">Nome Completo</label>
+                        <input type="text" id="userFullName" name="full_name" required placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userCPF">CPF</label>
+                        <input type="text" id="userCPF" name="cpf" required placeholder="000.000.000-00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" id="userEmail" name="email" required placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userPhone">Telefone</label>
+                        <input type="tel" id="userPhone" name="phone" placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userPassword">Senha</label>
+                        <input type="password" id="userPassword" name="password" required placeholder="Crie uma senha">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+
+                    <div class="form-message" id="registerUserMessage"></div>
+                </form>
+            </div>
+
+            <!-- Tab: Registro - Empresa -->
+            <div class="tab-content" id="register-company">
+                <form id="registerCompanyForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="companyName">Razão Social</label>
+                        <input type="text" id="companyName" name="company_name" required placeholder="Nome da empresa">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyCNPJ">CNPJ</label>
+                        <input type="text" id="companyCNPJ" name="cnpj" required placeholder="00.000.000/0000-00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyCategory">Categoria de Serviço</label>
+                        <select id="companyCategory" name="category" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Elétrica">Elétrica</option>
+                            <option value="Hidráulica">Hidráulica</option>
+                            <option value="CFTV">CFTV</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Portões">Portões</option>
+                            <option value="AVCB">AVCB</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Pintura">Pintura</option>
+                            <option value="Advocacia">Advocacia</option>
+                            <option value="Contabilidade">Contabilidade</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyEmail">Email</label>
+                        <input type="email" id="companyEmail" name="email" required placeholder="seu@empresa.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyPhone">Telefone</label>
+                        <input type="tel" id="companyPhone" name="phone" required placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyWhatsapp">WhatsApp</label>
+                        <input type="tel" id="companyWhatsapp" name="whatsapp" placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyPassword">Senha</label>
+                        <input type="password" id="companyPassword" name="password" required placeholder="Crie uma senha">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Cadastrar Empresa</button>
+
+                    <div class="form-message" id="registerCompanyMessage"></div>
+                </form>
+            </div>
+
+            <div class="auth-footer">
+                <p>Voltar para <a href="index.html">página inicial</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

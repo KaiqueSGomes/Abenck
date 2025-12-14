@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Empresa - Abenck</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .company-detail-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .company-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .company-logo-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            flex-shrink: 0;
+        }
+
+        .company-hero-content {
+            flex: 1;
+        }
+
+        .company-hero-content h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .company-hero-content .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .company-hero-content .location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .company-hero-content .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .company-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .company-actions .btn {
+            flex: 1;
+        }
+
+        .company-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .company-info-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .company-info-section h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .info-value a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .info-value a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .contact-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .contact-button:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .favorite-button {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .favorite-button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .reviews-section {
+            margin-top: 30px;
+        }
+
+        .review-item {
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .review-rating {
+            color: #ffc107;
+            font-size: 14px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .review-text {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--bg-light);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .company-hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .company-content {
+                grid-template-columns: 1fr;
+            }
+
+            .company-hero-content h1 {
+                font-size: 24px;
+            }
+
+            .company-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">A ABENCK</a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Voltar</a>
+                    <a href="auth.html" class="nav-link btn btn-primary">Entrar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading State -->
+    <div class="company-detail-container" id="loadingState">
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Carregando informações da empresa...</p>
+        </div>
+    </div>
+
+    <!-- Company Detail -->
+    <div class="company-detail-container" id="companyDetail" style="display: none;">
+        <!-- Hero Section -->
+        <div class="company-hero">
+            <div class="company-logo-large" id="companyLogoLarge">📱</div>
+            <div class="company-hero-content">
+                <h1 id="companyNameDetail">Nome da Empresa</h1>
+                <div class="rating">
+                    <span class="stars" id="companyRatingStars">★★★★★</span>
+                    <span id="companyRatingValue">4.9</span>
+                </div>
+                <div class="location">
+                    <span>📍</span>
+                    <span id="companyLocationDetail">São Paulo, SP</span>
+                </div>
+                <div id="sponsorshipBadge" style="display: none;">
+                    <span class="badge">PATROCINADO</span>
+                </div>
+                <div class="company-actions">
+                    <a href="#" class="btn btn-secondary" id="whatsappButton">
+                        Chamar no WhatsApp
+                    </a>
+                    <button class="btn btn-primary" id="favoriteButton">
+                        ❤️ Favoritar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="company-content">
+            <!-- Main Content -->
+            <div>
+                <!-- Description -->
+                <div class="company-info-section">
+                    <h2>Sobre</h2>
+                    <p id="companyDescription" style="color: var(--text-light); line-height: 1.6;">
+                        Descrição da empresa será carregada aqui...
+                    </p>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="company-info-section">
+                    <h2>Contato</h2>
+                    <div class="info-item">
+                        <div class="info-label">Telefone</div>
+                        <div class="info-value" id="companyPhoneDetail">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">WhatsApp</div>
+                        <div class="info-value">
+                            <a href="#" id="companyWhatsappLink">Enviar mensagem</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Endereço</div>
+                        <div class="info-value" id="companyAddressDetail">-</div>
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div class="company-info-section reviews-section">
+                    <h2>Avaliações</h2>
+                    <div id="reviewsList">
+                        <p style="color: var(--text-light); text-align: center; padding: 20px;">
+                            Nenhuma avaliação ainda
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <!-- Quick Contact -->
+                <div class="sidebar-card">
+                    <h3>Entrar em Contato</h3>
+                    <a href="#" class="contact-button" id="sidebarWhatsappButton">
+                        💬 WhatsApp
+                    </a>
+                    <a href="tel:" class="contact-button" id="sidebarPhoneButton" style="background: var(--primary-color);">
+                        📞 Ligar
+                    </a>
+                    <button class="favorite-button" id="sidebarFavoriteButton">
+                        ❤️ Favoritar
+                    </button>
+                </div>
+
+                <!-- Category -->
+                <div class="sidebar-card">
+                    <h3>Categoria</h3>
+                    <div style="font-size: 16px; color: var(--text-color); font-weight: 500;">
+                        <span id="companyCategoryDetail">-</span>
+                    </div>
+                </div>
+
+                <!-- Verification -->
+                <div class="sidebar-card">
+                    <h3>Verificação</h3>
+                    <div id="verificationStatus" style="font-size: 14px; color: var(--success-color); font-weight: 600;">
+                        ✓ Empresa Verificada
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Abenck. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/company.js"></script>
+</body>
+</html>

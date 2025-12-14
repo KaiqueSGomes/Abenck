@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abenck - Serviços para Condomínios</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">ABENCK</div>
+                <nav class="nav">
+                    <a href="#" class="nav-link">Buscar</a>
+                    <a href="#" class="nav-link">Favoritos</a>
+                    <a href="auth.html" class="nav-link btn btn-primary">Entrar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Carrossel de Empresas Patrocinadas -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <button class="carousel-btn carousel-btn-prev" onclick="prevSlide()">‹</button>
+
+            <div class="carousel-wrapper">
+                <div class="carousel" id="carousel">
+                    <!-- Cards serão inseridos aqui via JavaScript -->
+                </div>
+            </div>
+
+            <button class="carousel-btn carousel-btn-next" onclick="nextSlide()">›</button>
+        </div>
+
+        <div class="carousel-indicators" id="indicators"></div>
+    </section>
+
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <h2>O que você precisa hoje?</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar serviços..." class="search-input">
+                <button class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h3>Categorias</h3>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categorias serão inseridas aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Companies Section -->
+    <section class="recommended-section">
+        <div class="container">
+            <h3>Empresas recomendadas <span class="badge">(Patrocinadas)</span></h3>
+            <div class="companies-grid" id="companiesGrid">
+                <!-- Empresas serão inseridas aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular This Week Section -->
+    <section class="popular-section">
+        <div class="container">
+            <h3>Populares esta semana</h3>
+            <div class="popular-list" id="popularList">
+                <!-- Itens populares serão inseridos aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-content">
+                    <h2>É prestador de serviços?</h2>
+                    <p>Cadastre sua empresa e alcance milhares de condomínios em todo o Brasil. Apenas R$ 59,99/mês.</p>
+                    <a href="auth.html" class="btn btn-secondary">Quero Anunciar</a>
+                </div>
+                <div class="cta-image">
+                    <div class="placeholder-image">📱</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Abenck. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>
