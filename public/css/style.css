@@ -113,83 +113,7 @@ html, body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.carousel {
-    display: flex;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-slide {
-    min-width: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    padding: 40px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    transition: transform 0.5s ease;
-}
-
-.carousel-content {
-    flex: 1;
-}
-
-.carousel-content h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.carousel-content p {
-    font-size: 14px;
-    opacity: 0.9;
-    margin-bottom: 20px;
-}
-
-.carousel-image {
-    flex: 1;
-    text-align: center;
-    font-size: 80px;
-}
-
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.carousel-button:hover {
-    background: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-button.prev {
-    left: -25px;
-}
-
-.carousel-button.next {
-    right: -25px;
-}
+/* Carrossel antigo removido - usar apenas o carrossel novo abaixo */
 
 /* Search Section */
 .search-section {
@@ -492,24 +416,7 @@ html, body {
         gap: 15px;
     }
 
-    .carousel-slide {
-        flex-direction: column;
-        padding: 30px 20px;
-    }
-
-    .carousel-button {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-
-    .carousel-button.prev {
-        left: 10px;
-    }
-
-    .carousel-button.next {
-        right: 10px;
-    }
+    /* Carrossel antigo removido - usar apenas o carrossel novo abaixo */
 
     .search-box {
         flex-direction: column;
@@ -528,9 +435,7 @@ html, body {
         padding: 30px 20px;
     }
 
-    .carousel-content h2 {
-        font-size: 20px;
-    }
+    /* Carrossel antigo removido */
 
     .cta-content h2 {
         font-size: 20px;
@@ -679,7 +584,9 @@ html, body {
   align-items: center;
   gap: 40px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;  /* Evita conteúdo sair da caixa */
 }
+
 
 @keyframes slideIn {
   from {
@@ -759,10 +666,13 @@ html, body {
 .carousel-item-buttons {
   display: flex;
   gap: 10px;
+  width: 100%;  /* Limita a largura */
+  flex-shrink: 0;  /* Evita encolher */
 }
 
 .carousel-item-buttons a {
   flex: 1;
+  max-width: 150px;  /* Limita o tamanho máximo */
   padding: 12px 20px;
   border-radius: 8px;
   text-align: center;
@@ -771,6 +681,7 @@ html, body {
   transition: all 0.3s ease;
   font-size: 14px;
 }
+
 
 .carousel-item-buttons .btn-whatsapp {
   background: #25d366;
